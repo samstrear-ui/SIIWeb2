@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Sii</title>
+  <title>Contact Us - SII</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- hCaptcha — loaded async to avoid blocking page render -->
+  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
   
@@ -14,13 +16,11 @@
   <header>
     <nav>
       <a href="index.html" class="logo">
-        <img src="sii_full.png" alt="Sii">
+        <img src="sii_notag.png" alt="SII">
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
       </ul>
@@ -37,7 +37,6 @@
          =================================== -->
     <section class="hero">
       <div class="hero-overlay"></div>
-      <div class="hero-diagonal"></div>
       <div class="hero-content">
         <h1>Contact Us</h1>
         <p>Get in touch to discuss your project needs</p>
@@ -70,12 +69,7 @@
             
             <div class="contact-item">
               <strong>Email</strong>
-              <p><a href="mailto:info@sii.com">info@sii.com</a></p>
-            </div>
-            
-            <div class="contact-item">
-              <strong>Office Hours</strong>
-              <p>Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 2:00 PM<br>Sunday: Closed</p>
+              <p><a href="mailto:info@SIIbuilds.com">info@SIIbuilds.com</a></p>
             </div>
 
             <div class="contact-item">
@@ -114,9 +108,16 @@
                 <textarea id="message" name="message" required></textarea>
               </div>
               
+              <!-- hCaptcha widget -->
+              <!-- TODO [CODE]: Replace data-sitekey with real key from hcaptcha.com dashboard -->
+              <div class="form-group">
+                <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+              </div>
+
               <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
-              
+
             </form>
+            <div id="form-status" class="form-status" aria-live="polite"></div>
           </div>
           
         </div>
@@ -131,21 +132,19 @@
   <footer class="full-dark">
     <div class="footer-content">
       <div class="footer-logo">
-        <img src="sii_full.png" alt="Sii">
+        <img src="sii_notag.png" alt="SII">
       </div>
       <nav class="footer-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="people.html">People</a>
-        <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </nav>
       <div class="footer-contact">
         <p>+1 303 555 0192</p>
-        <p>info@sii.com</p>
+        <p>info@SIIbuilds.com</p>
       </div>
-      <p>&copy; 2025 Sii. All rights reserved.</p>
+      <p>Copyright 2025 SII</p>
     </div>
   </footer>
 
