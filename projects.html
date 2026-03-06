@@ -3,201 +3,458 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Sii</title>
+  <title>Projects - SII</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===================================
+       PROJECTS V2 — UNIFORM 4:3 GRID
+       =================================== */
+
+    /* ---- Page Banner (matches About page style) ---- */
+    .page-banner {
+      position: relative;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .page-banner-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      z-index: 0;
+    }
+
+    .page-banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(74, 74, 74, 0.88) 0%, rgba(26, 26, 26, 0.78) 100%);
+      z-index: 1;
+    }
+
+    .page-banner-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--white);
+      padding: 0 2rem;
+    }
+
+    .page-banner-content h1 {
+      color: var(--white);
+      font-family: var(--font-primary);
+      font-size: 3.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0;
+    }
+
+    .page-banner-content .banner-rule {
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 1rem auto 0;
+      display: block;
+    }
+
+    /* ---- Grid Section ---- */
+    .uniform-section {
+      background-color: #0e0e0e;
+      padding: 32px 24px 56px;
+    }
+
+    /* ---- Uniform Grid ---- */
+    .uniform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* ---- Uniform Item ---- */
+    .uniform-item {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      display: block;
+      border-radius: 0;
+    }
+
+    .uniform-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.4s ease;
+      transform: scale(1.05);
+    }
+
+    .uniform-item:hover img {
+      transform: scale(1.0);
+    }
+
+    /* ---- Hover Overlay ---- */
+    .uniform-item .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 55%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      padding: 48px 20px 20px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .uniform-item:hover .project-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (hover: none) {
+      .uniform-item .project-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.72) 0%,
+          rgba(0, 0, 0, 0) 65%
+        );
+      }
+    }
+
+    .uniform-item .project-overlay h3 {
+      color: var(--white);
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* ---- Grid meta line — ultra-thin ---- */
+    .grid-meta {
+      max-width: 1400px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .grid-meta-line {
+      flex: 1;
+      height: 0.5px;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .grid-meta-count {
+      color: rgba(255, 255, 255, 0.45);
+      font-family: var(--font-primary);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    .grid-meta-count span {
+      color: var(--accent);
+    }
+
+    /* ---- CTA Band ---- */
+    .projects-cta {
+      background-color: var(--dark);
+      padding: 70px 24px;
+      text-align: center;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .projects-cta h2 {
+      color: var(--white);
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 2.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+
+    .projects-cta .btn-primary {
+      font-size: 1rem;
+      padding: 16px 44px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+      .uniform-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .uniform-section {
+        padding: 24px 16px 40px;
+      }
+
+      .page-banner-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .projects-cta h2 {
+        font-size: 1.8rem;
+      }
+
+      .uniform-item .project-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0) 60%
+        );
+      }
+    }
+
+    @media (max-width: 480px) {
+      .uniform-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .page-banner-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  
+
   <!-- ===================================
        NAVIGATION
        =================================== -->
   <header>
     <nav>
       <a href="index.html" class="logo">
-        <img src="sii_full.png" alt="Sii">
+        <img src="sii_notag.png" alt="SII">
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="services.html">Services</a></li>
         <li><a href="projects.html" class="active">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-        ☰
-      </button>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
     </nav>
   </header>
 
   <main>
-    
+
     <!-- ===================================
-         PAGE HEADER
+         PAGE BANNER — about-style dark banner with background image
          =================================== -->
-    <section class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-diagonal"></div>
-      <div class="hero-content">
+    <div class="page-banner">
+      <img
+        class="page-banner-image"
+        src="Hotels on Canyon.jpg"
+        alt="SII Projects — Hotels on Canyon"
+      >
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
         <h1>Our Projects</h1>
+        <span class="banner-rule"></span>
+      </div>
+    </div>
+
+    <!-- ===================================
+         UNIFORM 4:3 GRID
+         =================================== -->
+    <section class="uniform-section">
+
+      <div class="grid-meta">
+        <div class="grid-meta-line"></div>
+        <div class="grid-meta-count"><span>15</span> Projects</div>
+        <div class="grid-meta-line"></div>
+      </div>
+
+      <div class="uniform-grid">
+
+        <!-- Lightbox-only items (no individual page) -->
+        <div class="uniform-item project-item">
+          <img src="Boettcher Concert Hall Renovation Analysis.png"
+               alt="Boettcher Concert Hall">
+          <div class="project-overlay">
+            <h3>Boettcher Concert Hall</h3>
+          </div>
+        </div>
+
+        <!-- Individual page linked items -->
+        <a href="project-clyfford-still-museum.html" class="uniform-item">
+          <img src="Clyfford Still Museum.png"
+               alt="Clyfford Still Museum">
+          <div class="project-overlay">
+            <h3>Clyfford Still Museum</h3>
+          </div>
+        </a>
+
+        <a href="project-denver-performing-arts.html" class="uniform-item">
+          <img src="Denver Performing Arts Complex MVP.jpg"
+               alt="Denver Performing Arts Complex">
+          <div class="project-overlay">
+            <h3>Denver Performing Arts Complex</h3>
+          </div>
+        </a>
+
+        <a href="project-hotels-on-canyon.html" class="uniform-item">
+          <img src="Hotels on Canyon.jpg"
+               alt="Hotels on Canyon">
+          <div class="project-overlay">
+            <h3>Hotels on Canyon</h3>
+          </div>
+        </a>
+
+        <a href="project-oakwood-homes.html" class="uniform-item">
+          <img src="Oakwood Homes – Ebert's Terrace.jpg"
+               alt="Ebert's Terrace">
+          <div class="project-overlay">
+            <h3>Ebert's Terrace</h3>
+          </div>
+        </a>
+
+        <a href="project-boulder-country-club.html" class="uniform-item">
+          <img src="BoulderCountryClub-ClubhouseRenovation.jpg"
+               alt="Boulder Country Club Clubhouse Renovation">
+          <div class="project-overlay">
+            <h3>Boulder Country Club</h3>
+          </div>
+        </a>
+
+        <a href="project-boulder-country-club.html" class="uniform-item">
+          <img src="Boulder Country Club – The Deep End.jpg"
+               alt="Boulder Country Club — The Deep End">
+          <div class="project-overlay">
+            <h3>The Deep End</h3>
+          </div>
+        </a>
+
+        <a href="project-independence-neighborhood.html" class="uniform-item">
+          <img src="Independence Neighborhood – Homestead Poolhouse &amp; Amenities.jpg"
+               alt="Independence Neighborhood Poolhouse">
+          <div class="project-overlay">
+            <h3>Independence Neighborhood</h3>
+          </div>
+        </a>
+
+        <a href="project-oakwood-homes.html" class="uniform-item">
+          <img src="Oakwood Homes – Amenity Projects.jpg"
+               alt="Oakwood Homes Amenity Projects">
+          <div class="project-overlay">
+            <h3>Oakwood Homes Amenities</h3>
+          </div>
+        </a>
+
+        <!-- Lightbox-only items -->
+        <div class="uniform-item project-item">
+          <img src="Trailhead.png"
+               alt="Trailhead">
+          <div class="project-overlay">
+            <h3>Trailhead</h3>
+          </div>
+        </div>
+
+        <a href="project-congregation-bonai-shalom.html" class="uniform-item">
+          <img src="Congregation Bonai Shalom.jpg"
+               alt="Congregation Bonai Shalom">
+          <div class="project-overlay">
+            <h3>Congregation Bonai Shalom</h3>
+          </div>
+        </a>
+
+        <!-- Lightbox-only items -->
+        <div class="uniform-item project-item">
+          <img src="National Western Center Program.png"
+               alt="National Western Center">
+          <div class="project-overlay">
+            <h3>National Western Center</h3>
+          </div>
+        </div>
+
+        <a href="project-multi-family-portfolio.html" class="uniform-item">
+          <img src="Multi-Family Portfolio.jpg"
+               alt="Multi-Family Portfolio">
+          <div class="project-overlay">
+            <h3>Multi-Family Portfolio</h3>
+          </div>
+        </a>
+
+        <!-- Lightbox-only items -->
+        <div class="uniform-item project-item">
+          <img src="Los Angeles Convention Center.jpg"
+               alt="Los Angeles Convention Center">
+          <div class="project-overlay">
+            <h3>Los Angeles Convention Center</h3>
+          </div>
+        </div>
+
+        <div class="uniform-item project-item">
+          <img src="Clayton Early Learning.png"
+               alt="Clayton Early Learning">
+          <div class="project-overlay">
+            <h3>Clayton Early Learning</h3>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <!-- ===================================
-         PROJECTS GALLERY
+         CTA BAND
          =================================== -->
-    <section class="full-white">
-      <div class="container">
-        
-        <!-- Cultural & Arts -->
-        <div class="project-category-section">
-          <h2 class="project-category-title">CULTURAL & ARTS</h2>
-          <div class="projects-gallery">
-            <div class="project-item">
-              <img src="Boettcher Concert Hall Renovation Analysis.png" alt="Boettcher Concert Hall">
-              <div class="project-overlay">
-                <h3>Boettcher Concert Hall</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Clyfford Still Museum.png" alt="Clyfford Still Museum">
-              <div class="project-overlay">
-                <h3>Clyfford Still Museum</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Denver Performing Arts Complex MVP.jpg" alt="Denver Performing Arts Complex">
-              <div class="project-overlay">
-                <h3>Denver Performing Arts Complex</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Hospitality -->
-        <div class="project-category-section">
-          <h2 class="project-category-title">HOSPITALITY</h2>
-          <div class="projects-gallery">
-            <div class="project-item">
-              <img src="Hotels on Canyon.jpg" alt="Hotels on Canyon">
-              <div class="project-overlay">
-                <h3>Hotels on Canyon</h3>
-                <p>Boulder, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Oakwood Homes – Ebert's Terrace.jpg" alt="Ebert's Terrace">
-              <div class="project-overlay">
-                <h3>Ebert's Terrace</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="BoulderCountryClub-ClubhouseRenovation.jpg" alt="Boulder Country Club Clubhouse">
-              <div class="project-overlay">
-                <h3>Boulder Country Club</h3>
-                <p>Boulder, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Boulder Country Club – The Deep End.jpg" alt="Boulder Country Club Poolhouse">
-              <div class="project-overlay">
-                <h3>The Deep End</h3>
-                <p>Boulder, CO</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Residential & Community -->
-        <div class="project-category-section">
-          <h2 class="project-category-title">RESIDENTIAL & COMMUNITY</h2>
-          <div class="projects-gallery">
-            <div class="project-item">
-              <img src="Independence Neighborhood – Homestead Poolhouse & Amenities.jpg" alt="Independence Neighborhood Poolhouse">
-              <div class="project-overlay">
-                <h3>Independence Neighborhood</h3>
-                <p>Elizabeth, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Oakwood Homes – Amenity Projects.jpg" alt="Oakwood Homes Amenity Projects">
-              <div class="project-overlay">
-                <h3>Oakwood Homes Amenities</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Trailhead.png" alt="Trailhead">
-              <div class="project-overlay">
-                <h3>Trailhead</h3>
-                <p>Littleton, CO</p>
-              </div>
-            </div>
-            <div class="project-item">
-              <img src="Congregation Bonai Shalom.jpg" alt="Congregation Bonai Shalom">
-              <div class="project-overlay">
-                <h3>Congregation Bonai Shalom</h3>
-                <p>Boulder, CO</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Master Planning & Infrastructure -->
-        <div class="project-category-section">
-          <h2 class="project-category-title">MASTER PLANNING & INFRASTRUCTURE</h2>
-          <div class="projects-gallery">
-            <div class="project-item">
-              <img src="National Western Center Program.png" alt="National Western Center">
-              <div class="project-overlay">
-                <h3>National Western Center</h3>
-                <p>Denver, CO</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-
-    <!-- ===================================
-         CALL TO ACTION
-         =================================== -->
-    <section class="full-offwhite contact-banner">
-      <div class="container">
-        <h2>Have a Project in Mind?</h2>
-        <p>Let's work together to make it a reality</p>
-        <a href="contact.html" class="btn btn-secondary">Start Your Project</a>
-      </div>
+    <section class="projects-cta">
+      <h2>Have a Project in Mind?</h2>
+      <a href="contact.html" class="btn btn-primary">Contact Us</a>
     </section>
 
   </main>
 
   <!-- ===================================
-       FOOTER (DARK)
+       FOOTER
        =================================== -->
   <footer class="full-dark">
     <div class="footer-content">
       <div class="footer-logo">
-        <img src="sii_full.png" alt="Sii">
+        <img src="sii_notag.png" alt="SII">
       </div>
       <nav class="footer-nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="people.html">People</a>
-        <a href="services.html">Services</a>
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </nav>
       <div class="footer-contact">
         <p>+1 303 555 0192</p>
-        <p>info@sii.com</p>
+        <p>info@SIIbuilds.com</p>
       </div>
-      <p>&copy; 2025 Sii. All rights reserved.</p>
+      <p>Copyright 2025 SII</p>
     </div>
   </footer>
 
