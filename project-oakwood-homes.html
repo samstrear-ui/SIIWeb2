@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oakwood Homes - SII</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .page-banner { position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--dark); }
+    .page-banner-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; z-index: 0; }
+    .page-banner-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(74,74,74,0.88) 0%, rgba(26,26,26,0.78) 100%); z-index: 1; }
+    .page-banner-content { position: relative; z-index: 2; text-align: center; color: var(--white); padding: 0 2rem; }
+    .page-banner-content h1 { color: var(--white); font-family: var(--font-primary); font-size: 3rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0; }
+    .page-banner-content .banner-rule { width: 60px; height: 3px; background: var(--accent); margin: 1rem auto 0; display: block; }
+    .project-back { background: var(--light); padding: 1rem 2rem; }
+    .project-back a { font-family: var(--font-primary); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dark); opacity: 0.7; transition: var(--transition); }
+    .project-back a:hover { opacity: 1; color: var(--accent); }
+    .project-back a::before { content: '\2190  '; }
+    .project-images { background: var(--white); padding: 3rem 2rem; }
+    .project-images-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .project-img-slot { aspect-ratio: 4/3; overflow: hidden; background: var(--light); }
+    .project-img-slot img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.4s ease; }
+    .project-img-slot:hover img { transform: scale(1.04); }
+    .project-details { background: var(--light); padding: 3rem 2rem 4rem; }
+    .project-details-inner { max-width: 900px; margin: 0 auto; }
+    .project-details h2 { font-family: var(--font-primary); font-size: 1.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--dark); margin-bottom: 1.5rem; }
+    .project-details ul { list-style: none; padding: 0; margin: 0; }
+    .project-details ul li { font-size: 1rem; line-height: 1.7; color: var(--dark); padding: 0.6rem 0; border-bottom: 0.5px solid rgba(0,0,0,0.1); display: flex; align-items: flex-start; gap: 0.75rem; }
+    .project-details ul li::before { content: ''; display: inline-block; width: 6px; height: 6px; min-width: 6px; background: var(--accent); border-radius: 50%; margin-top: 0.55rem; }
+    @media (max-width: 768px) { .project-images-inner { grid-template-columns: 1fr; } .page-banner-content h1 { font-size: 2.2rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="logo"><img src="sii_notag.png" alt="SII"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page-banner">
+      <img class="page-banner-image" src="Oakwood Homes – Amenity Projects.jpg" alt="Oakwood Homes">
+      <div class="page-banner-overlay"></div>
+      <div class="page-banner-content">
+        <h1>Oakwood Homes</h1>
+        <span class="banner-rule"></span>
+      </div>
+    </div>
+
+    <div class="project-back"><a href="projects.html">All Projects</a></div>
+
+    <section class="project-images">
+      <div class="project-images-inner">
+        <div class="project-img-slot">
+          <img src="Oakwood Homes – Amenity Projects.jpg" alt="Oakwood Homes — Amenity Projects" data-slot="project-img-1">
+        </div>
+        <div class="project-img-slot">
+          <img src="Oakwood Homes – Ebert’s Terrace.jpg" alt="Oakwood Homes — Ebert's Terrace" data-slot="project-img-2">
+        </div>
+        <div class="project-img-slot">
+          <img src="Oakwood Homes – Amenity Projects2.jpg" alt="Oakwood Homes — Amenity Projects 2" data-slot="project-img-3">
+        </div>
+      </div>
+    </section>
+
+    <section class="project-details">
+      <div class="project-details-inner">
+        <h2>Project Details</h2>
+        <ul>
+          <li>Type: Residential Amenity Projects</li>
+          <li>SII Role: Owner's Representative</li>
+          <li>Projects: Amenity Projects portfolio and Ebert's Terrace</li>
+          <li>Scope: Amenity facility design oversight and construction management</li>
+          <li>Services: Consultant selection, design oversight, construction oversight, project controls</li>
+          <li>Additional photos and project details to be updated</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="full-dark">
+    <div class="footer-content">
+      <div class="footer-logo"><img src="sii_notag.png" alt="SII"></div>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-contact">
+        <p>+1 303 555 0192</p>
+        <p>info@SIIbuilds.com</p>
+      </div>
+      <p>Copyright 2025 SII</p>
+    </div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
